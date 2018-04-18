@@ -7,6 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('surveys');
+  this.route('devices');
+  this.route('data');
+  this.route('maps');
 });
 
 export default Router;
