@@ -1,7 +1,6 @@
 # akvov3
-
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+we are migrating the [akvo-flow-dashboard](https://github.com/akvo/akvo-flow) from ember 1.X 
+to latest ember 3.0. yeah focusing only on the frontend part.
 
 ## Prerequisites
 
