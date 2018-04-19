@@ -1,5 +1,5 @@
 {{!yield}}
-<header class="floats-in top" id="header">
+<header class="floats-in top" id="header" role="banner">
   <div class="widthConstraint">
    <h1>Akvo Flow</h1>
    <!-- show the login button if it z public -->
@@ -12,15 +12,13 @@
              {{#link-to "maps"}}Maps{{/link-to}}      
           </ul>
        </nav>
-       <button class="logOut"><a {{action 'doLogOut'}} class="smallButton">{{'log out'}}</a></button>
+       <li class="logOut"><a {{action 'doLogOut'}} class="smallButton">{{'log out'}}</a></li>
     {{else}}
       <ul>
-        <!--<li class="logIn"><a href="/admin/"  class="smallButton">{{'Login'}}</a></li>-->
-        <button class="logIn"><a {{action 'doLogIn'}} class="smallButton">{{'Login'}}</a></button>
+        <li class="logIn"><a {{action 'doLogIn'}} class="smallButton">{{'Login'}}</a></li>
      </ul>
         
    {{/if}}
 
   </div>
 </header>
-<h1>Welcome to Akvo Flow Dashboard</h1>
