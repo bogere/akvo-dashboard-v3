@@ -11,6 +11,8 @@ Router.map(function() {
   this.route('devices');
   this.route('data');
   this.route('maps');
+  this.route('users');
+  this.route('messages');
 });
 
 export default Router;

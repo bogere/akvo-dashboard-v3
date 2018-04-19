@@ -1,7 +1,7 @@
 {{!yield}}
 <header class="floats-in top" id="header" role="banner">
   <div class="widthConstraint">
-   <h1>Akvo Flow</h1>
+    <h1>Akvo Flow</h1>
    <!-- show the login button if it z public -->
    {{#if loggedIn}}
        <nav id="topnav" role="navigation" class="appNav">
@@ -9,7 +9,9 @@
              {{#link-to "surveys"}}Surveys{{/link-to}}
              {{#link-to "devices"}}Devices{{/link-to}}
              {{#link-to "data"}}Data{{/link-to}}
-             {{#link-to "maps"}}Maps{{/link-to}}      
+             {{#link-to "maps"}}Maps{{/link-to}}
+             {{#link-to "users"}}Users{{/link-to}}
+             {{#link-to "messages"}}Messages{{/link-to}}      
           </ul>
        </nav>
        <li class="logOut"><a {{action 'doLogOut'}} class="smallButton">{{'log out'}}</a></li>
