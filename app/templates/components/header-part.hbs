@@ -6,18 +6,18 @@
    {{#if loggedIn}}
        <nav id="topnav" role="navigation" class="appNav">
           <ul class="floats-in">
-             {{#link-to "surveys"}}Surveys{{/link-to}}
-             {{#link-to "devices"}}Devices{{/link-to}}
-             {{#link-to "data"}}Data{{/link-to}}
-             {{#link-to "maps"}}Maps{{/link-to}}
-             {{#link-to "users"}}Users{{/link-to}}
-             {{#link-to "messages"}}Messages{{/link-to}}      
+             {{#link-to "surveys"}}{{t '_surveys'}}{{/link-to}}
+             {{#link-to "devices"}}{{t '_devices'}}{{/link-to}}
+             {{#link-to "data"}}{{t '_data'}}{{/link-to}}
+             {{#link-to "maps"}}{{t '_maps'}}{{/link-to}}
+             {{#link-to "users"}}{{t '_users'}}{{/link-to}}
+             {{#link-to "messages"}}{{t '_messages'}}{{/link-to}}      
           </ul>
        </nav>
-       <li class="logOut"><a {{action 'doLogOut'}} class="smallButton">{{'log out'}}</a></li>
+       <li class="logOut"><a {{action 'doLogOut'}} class="smallButton">{{t '_log_out'}}</a></li>
     {{else}}
       <ul>
-        <li class="logIn"><a {{action 'doLogIn'}} class="smallButton">{{'Login'}}</a></li>
+        <li class="logIn"><a {{action 'doLogIn'}} class="smallButton">{{t '_log_in'}}</a></li>
      </ul>
         
    {{/if}}
