@@ -1,15 +1,7 @@
 
 {{!-- the general application layout --}}
-<div class = "container">
-   <div class = "header">
-      {{header-part}} {{!why does the footer appear when u remove header part}}
-   </div>
-   <div class = "body">
-      {{outlet}}
-   </div>
-   <div class = "footer">
-      {{!partial 'footer'}} {{!suppose i need to switch languages..}}
-      {{footer-part}}
-   </div>
-
-</div>
+{{header-part}}
+ <div id="pageWrap" class="widthConstraint belowHeader public">
+    {{outlet}}
+ </div>
+{{footer-part}}

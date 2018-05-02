@@ -11,7 +11,7 @@ export default Component.extend({
   },
   actions:{
     switchLanguage(){
-      console.log('iam switching languages' + Date.now())
+      console.log(this.get('selectedOption'))
     }
     
   }
