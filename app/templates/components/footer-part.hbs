@@ -14,9 +14,11 @@
              <label class="languageSelector">
                 {{select-box 
                    content = languageContent
+                   groups = myGroups
                    selection=selectedOption
                    optionLabelPath="label"
                    optionValuePath="value"
+                   optionGroupPath="group"
                    prompt = "select favourite language"
                    class = "select-box-widget"
                    didChangeAction = 'switchLanguage'

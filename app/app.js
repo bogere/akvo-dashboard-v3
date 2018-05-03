@@ -8,7 +8,8 @@ const App = Application.extend({
   podModulePrefix: config.podModulePrefix,
   Resolver,
   //set the current locale to be used:
-  locale: 'en'
+  locale: config.APP.defaultLocale //en
+
 });
 
 loadInitializers(App, config.modulePrefix);
