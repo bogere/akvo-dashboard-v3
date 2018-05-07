@@ -1,6 +1,17 @@
 {{!outlet}}
-<h3>displaying the maps</h3>
+<section id="main" class="mapFlow floats-in middleSection" role="main">
+  {{select-box
+    content = tileLayers
+    selection= selectedOption
+    optionLabelPath="label"
+    optionValuePath="value"
+    prompt = 'select your favourite map layer'
+    didChangeAction= 'changeLayer'
+   }}
 {{#leaflet-map lat=lat lng=lng zoom=zoom}}
   {{!-- Specify child layer components here --}}
-  {{tile-layer url= "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
+  {{!tile-layer url= "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
+  {{tile-layer url= defaultLayer}}
 {{/leaflet-map}}
+
+</section>
