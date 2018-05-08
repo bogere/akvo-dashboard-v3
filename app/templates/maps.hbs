@@ -1,4 +1,3 @@
-{{!outlet}}
 <section id="main" class="mapFlow floats-in middleSection" role="main">
   {{select-box
     content = tileLayers
@@ -8,10 +7,28 @@
     prompt = 'select your favourite map layer'
     didChangeAction= 'changeLayer'
    }}
-{{#leaflet-map lat=lat lng=lng zoom=zoom}}
-  {{!-- Specify child layer components here --}}
-  {{!tile-layer url= "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
-  {{tile-layer url= defaultLayer}}
-{{/leaflet-map}}
+  
+  <div id="dropdown-holder">
+     <div id="mapDetailsHideShow" class="drawHandle hideMapD"></div>
+  </div>
+       {{#leaflet-map lat=lat lng=lng zoom=zoom}}
+             {{!-- Specify child layer components here --}}
+             {{!tile-layer url= "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
+             {{tile-layer url= defaultLayer}}
+             {{!u need to play with the markers n popups}}
+               {{#marker-layer  location = peaceLocation}}
+                  {{#popup-layer}}
+                     <h3>Peace Corps Uganda</h3>
+                     Plot 53 / P.O. Box 7007 Prince Charles Dr, Kampala, Uganda<br>
+                  {{/popup-layer}}
+               {{/marker-layer}}
+               {{#marker-layer location = britishLocation}}
+                  {{#popup-layer}}
+                    <h3>British High Commission</h3>
+                     Plot 4 / P. O. Box 7070, Kampala, Uganda<br>
+                  {{/popup-layer}}
+               {{/marker-layer}}
+        
+      {{/leaflet-map}}
 
 </section>
