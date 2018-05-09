@@ -7,17 +7,17 @@
     prompt = 'select your favourite map layer'
     didChangeAction= 'changeLayer'
    }}
-  
+    <p>Latitude:<code>{{lat}}</code> / longitude :<code>{{lng}}</code></p>
   <div id="dropdown-holder">
      <div id="mapDetailsHideShow" class="drawHandle hideMapD"></div>
   </div>
-       {{#leaflet-map lat=lat lng=lng zoom=zoom}}
+       {{#leaflet-map lat=lat lng=lng zoom=zoom onMoveend=(action 'updateCenter')}}
              {{!-- Specify child layer components here --}}
              {{!tile-layer url= "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
              {{tile-layer url= defaultLayer}}
              {{!u need to play with the markers n popups}}
              {{#each locationPoints as |POI|}}
-               {{#marker-layer  location = POI.dataPoint}}
+               {{#marker-layer  location = POI.dataPoint onClick=(action 'showModal')}}
                   {{#popup-layer}}
                      <h3>{{POI.title}}</h3>
                       {{POI.street}}<br>

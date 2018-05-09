@@ -14,10 +14,6 @@ export default Controller.extend({
     {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'} 
   ],
-  //catering for the markers on the map..
-  //play around with other geocordinates.
-   /*peaceLocation: [0.3372743,32.5921307],
-   britishLocation:[0.334949619708498,32.58311441970849],*/
    //dealing with dynamic location details.
    locationPoints:[
      {
@@ -37,6 +33,16 @@ export default Controller.extend({
      var selectedLayer = this.get('selectedOption')
      console.log(selectedLayer)
       this.set('defaultLayer', selectedLayer)  
+    },
+    //updating the center for teh map..
+    updateCenter(e){
+       let center = e.target.getCenter(); //cordinates of the center
+       this.set('lat', center.lat)
+       this.set('lng', center.lng)
+    },
+    //show the summary details of data point via teh modal.
+    showModal(e){
+      console.log('yeah i can see summary')
     }
   }
 });
