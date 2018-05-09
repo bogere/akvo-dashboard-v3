@@ -8,6 +8,7 @@ export default Controller.extend({
   lng:32.6149900, //Hive Collab Kampala
   zoom: 10,
   defaultLayer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+  nightMode: true, //change the tile layer based on checked value
   tileLayers:[
     {label: 'stamen terrain', value: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'},
     {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'},
@@ -42,7 +43,8 @@ export default Controller.extend({
     },
     //show the summary details of data point via teh modal.
     showModal(e){
-      console.log('yeah i can see summary')
+      console.log('yeah i can see summary',e.latlng)
+      //get these values-> show the data point in summary details
     }
   }
 });
