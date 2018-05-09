@@ -16,18 +16,14 @@
              {{!tile-layer url= "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
              {{tile-layer url= defaultLayer}}
              {{!u need to play with the markers n popups}}
-               {{#marker-layer  location = peaceLocation}}
+             {{#each locationPoints as |POI|}}
+               {{#marker-layer  location = POI.dataPoint}}
                   {{#popup-layer}}
-                     <h3>Peace Corps Uganda</h3>
-                     Plot 53 / P.O. Box 7007 Prince Charles Dr, Kampala, Uganda<br>
+                     <h3>{{POI.title}}</h3>
+                      {{POI.street}}<br>
                   {{/popup-layer}}
                {{/marker-layer}}
-               {{#marker-layer location = britishLocation}}
-                  {{#popup-layer}}
-                    <h3>British High Commission</h3>
-                     Plot 4 / P. O. Box 7070, Kampala, Uganda<br>
-                  {{/popup-layer}}
-               {{/marker-layer}}
+             {{/each}}
         
       {{/leaflet-map}}
 

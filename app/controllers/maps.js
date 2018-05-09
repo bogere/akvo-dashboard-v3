@@ -16,8 +16,21 @@ export default Controller.extend({
   ],
   //catering for the markers on the map..
   //play around with other geocordinates.
-   peaceLocation: [0.3372743,32.5921307],
-   britishLocation:[0.334949619708498,32.58311441970849],
+   /*peaceLocation: [0.3372743,32.5921307],
+   britishLocation:[0.334949619708498,32.58311441970849],*/
+   //dealing with dynamic location details.
+   locationPoints:[
+     {
+       title: 'Peace Corps Uganda',
+       street: 'Plot 53 / P.O. Box 7007 Prince Charles Dr, Kampala, Uganda',
+       dataPoint: [0.3372743,32.5921307]
+     },
+     {
+       title: 'British High Commission',
+       street: 'Plot 4 / P. O. Box 7070, Kampala, Uganda',
+       dataPoint: [0.334949619708498,32.58311441970849]
+     }
+   ],
   actions:{
     //changing the tile layers dynamically.
     changeLayer(){
