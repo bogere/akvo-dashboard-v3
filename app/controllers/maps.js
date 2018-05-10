@@ -37,26 +37,7 @@ export default Controller.extend({
    ]),
    
    //dealing with the polygon layers... but u shall learn sth about computed properties.
-   /*dangerZone: computed('', function(){
-     
-   }),*/
-   //i love ES6 version.
-   /*dangerZone: computed('locationPoints.@each.dataPoint', ()=>{
-       //return this.get('locationPoints').map() 
-       //i need u to return the array of data points only. 
-       //var latlngs = [[37, -109.05],[41, -109.03],[41, -102.05],[37, -102.04]];
-        //var polygon = L.polygon(latlngs, {color: 'red'}).addTo(map); 
-        return this.get('locationPoints').map() 
-   }),*/
-   //what about this.
-  /*dangerZone: computed('locationPoints.[]', function(){ //this only works if u r adding or removing items
-     let geoCordinates = this.get('locationPoints') 
-  }),*/
-  dangerZone: computed('locationPoints.@each.dataPoint', function(){
-     /*return this.get('locationPoints').map(r =>{
-         ({lat: r[0], lng: r[1]})   
-     })*/
-     //return this.get('locationPoints').map(r=> ({lat: r[0], lng: r[1]})) //runtime.js:6407 Uncaught TypeError: Cannot read property 'commit' of null
+  dangerZone: computed('locationPoints.[]', function(){
      let locs = this.get('locationPoints'),
          locArray = [];
      locs.forEach((item,index)=>{
@@ -68,7 +49,6 @@ export default Controller.extend({
     //changing the tile layers dynamically.
     changeLayer(){
      var selectedLayer = this.get('selectedOption')
-     console.log(selectedLayer)
       this.set('defaultLayer', selectedLayer)  
     },
     //updating the center for teh map..
