@@ -1,4 +1,6 @@
 import Controller from '@ember/controller';
+import {computed} from '@ember/object';
+import { A } from '@ember/array';
 
 export default Controller.extend({
   //for the demo map..
@@ -8,7 +10,7 @@ export default Controller.extend({
   lng:32.6149900, //Hive Collab Kampala
   zoom: 10,
   defaultLayer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-  nightMode: true, //change the tile layer based on checked value
+  nightMode: false, //change the tile layer based on checked value
   tileLayers:[
     {label: 'stamen terrain', value: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'},
     {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'},
@@ -16,7 +18,7 @@ export default Controller.extend({
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'} 
   ],
    //dealing with dynamic location details.
-   locationPoints:[
+   locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
      {
        title: 'Peace Corps Uganda',
        street: 'Plot 53 / P.O. Box 7007 Prince Charles Dr, Kampala, Uganda',
@@ -26,8 +28,42 @@ export default Controller.extend({
        title: 'British High Commission',
        street: 'Plot 4 / P. O. Box 7070, Kampala, Uganda',
        dataPoint: [0.334949619708498,32.58311441970849]
+     },
+     {
+       title: 'kololo Hospital Kampala',
+       street: 'Plot 16 Kawalya Kaggwa Close, Kololo/P.O. Box 71997',
+       dataPoint:[0.3340316,32.5889985]
      }
-   ],
+   ]),
+   
+   //dealing with the polygon layers... but u shall learn sth about computed properties.
+   /*dangerZone: computed('', function(){
+     
+   }),*/
+   //i love ES6 version.
+   /*dangerZone: computed('locationPoints.@each.dataPoint', ()=>{
+       //return this.get('locationPoints').map() 
+       //i need u to return the array of data points only. 
+       //var latlngs = [[37, -109.05],[41, -109.03],[41, -102.05],[37, -102.04]];
+        //var polygon = L.polygon(latlngs, {color: 'red'}).addTo(map); 
+        return this.get('locationPoints').map() 
+   }),*/
+   //what about this.
+  /*dangerZone: computed('locationPoints.[]', function(){ //this only works if u r adding or removing items
+     let geoCordinates = this.get('locationPoints') 
+  }),*/
+  dangerZone: computed('locationPoints.@each.dataPoint', function(){
+     /*return this.get('locationPoints').map(r =>{
+         ({lat: r[0], lng: r[1]})   
+     })*/
+     //return this.get('locationPoints').map(r=> ({lat: r[0], lng: r[1]})) //runtime.js:6407 Uncaught TypeError: Cannot read property 'commit' of null
+     let locs = this.get('locationPoints'),
+         locArray = [];
+     locs.forEach((item,index)=>{
+         locArray.push(item.dataPoint) 
+     })
+    return locArray
+  }),
   actions:{
     //changing the tile layers dynamically.
     changeLayer(){

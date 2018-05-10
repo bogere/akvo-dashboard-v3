@@ -29,6 +29,13 @@
                   {{/popup-layer}}
                {{/marker-layer}}
              {{/each}}
+             
+             {{! what about the polygon layer that can show the cluster}}
+             {{#polygon-layer locations = dangerZone color = "red" }}
+                {{#tooltip-layer sticky = true}}
+                   COOL ZONE
+                {{/tooltip-layer}}
+             {{/polygon-layer}}
         
       {{/leaflet-map}}
 
