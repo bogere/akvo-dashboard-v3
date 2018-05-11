@@ -16,9 +16,9 @@
        {{#leaflet-map lat=lat lng=lng zoom=zoom onMoveend=(action 'updateCenter')}}
              {{!-- Specify child layer components here --}}
               {{#if nightMode}}
-                {{tile-layer url = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"}}
+                {{tile-layer url = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png" attribution = defaultAttr}}
               {{else}}
-                {{tile-layer url= defaultLayer attribution = "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"}} 
+                {{tile-layer url= defaultLayer attribution = defaultAttr}} 
               {{/if}}
              {{!u need to play with the markers n popups}}
              {{#each locationPoints as |POI|}}

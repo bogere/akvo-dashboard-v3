@@ -10,10 +10,11 @@ export default Controller.extend({
   lng:32.6149900, //Hive Collab Kampala
   zoom: 10,
   defaultLayer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+  defaultAttr: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
   nightMode: false, //change the tile layer based on checked value
   tileLayers:[
     {label: 'stamen terrain', value: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'},
-    {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'},
+    {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', attrValue: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'},
     {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
     {label: 'Google streets', value: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'} 
@@ -51,7 +52,15 @@ export default Controller.extend({
     //changing the tile layers dynamically.
     changeLayer(){
      var selectedLayer = this.get('selectedOption')
-      this.set('defaultLayer', selectedLayer)  
+      this.set('defaultLayer', selectedLayer)
+      //this.set('defaultAttr', attrValue ) //work on this later pliz. for the select box.
+      //what about Mary solution for the power select. think?????
+      //quick hack for selecting attrValue.
+        if (selectedLayer == 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png') {
+          console.log('stamen attribute !!!!')
+          this.set('defaultAttr', 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>')
+        }
+        //please avoid using hard coded values... Ember.Object with these attribution values
     },
     //updating the center for teh map..
     updateCenter(e){
