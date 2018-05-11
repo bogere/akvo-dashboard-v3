@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import {computed} from '@ember/object';
+import {computed, observer} from '@ember/object';
 import { A } from '@ember/array';
 
 export default Controller.extend({
@@ -48,6 +48,8 @@ export default Controller.extend({
        
      return locArray;
   }),
+  
+  
   actions:{
     //changing the tile layers dynamically.
     changeLayer(){
@@ -56,10 +58,10 @@ export default Controller.extend({
       //this.set('defaultAttr', attrValue ) //work on this later pliz. for the select box.
       //what about Mary solution for the power select. think?????
       //quick hack for selecting attrValue.
-        if (selectedLayer == 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png') {
+        /*if (selectedLayer == 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png') {
           console.log('stamen attribute !!!!')
           this.set('defaultAttr', 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>')
-        }
+        }*/
         //please avoid using hard coded values... Ember.Object with these attribution values
     },
     //updating the center for teh map..
@@ -73,5 +75,15 @@ export default Controller.extend({
       console.log('yeah i can see summary',e.latlng)
       //get these values-> show the data point in summary details
     }
-  }
+  },
+    //maybe u need to observe teh selectedLayer to change the attriValue.
+    updateAttribution: observer('selectedOption', function(){
+       //in this case selectedOption is the selectedLayer..
+        let self = this; // this only changes the context.
+        let selectedLayer = this.get('selectedOption')
+        if (selectedLayer == 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png') {
+           console.log('stamen!!!!!')
+           self.set('defaultAttr', 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>')
+        }
+    })
 });
