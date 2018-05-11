@@ -15,7 +15,8 @@ export default Controller.extend({
     {label: 'stamen terrain', value: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'},
     {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'},
     {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
-    {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'} 
+    {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
+    {label: 'Google streets', value: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'} 
   ],
    //dealing with dynamic location details.
    locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
@@ -42,8 +43,9 @@ export default Controller.extend({
          locArray = [];
      locs.forEach((item,index)=>{
          locArray.push(item.dataPoint) 
-     })
-    return locArray
+     })  
+       
+     return locArray;
   }),
   actions:{
     //changing the tile layers dynamically.

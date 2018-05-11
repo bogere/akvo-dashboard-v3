@@ -18,7 +18,7 @@
               {{#if nightMode}}
                 {{tile-layer url = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"}}
               {{else}}
-                {{tile-layer url= defaultLayer}} 
+                {{tile-layer url= defaultLayer attribution = "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"}} 
               {{/if}}
              {{!u need to play with the markers n popups}}
              {{#each locationPoints as |POI|}}
