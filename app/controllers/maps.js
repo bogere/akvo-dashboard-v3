@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import {computed, observer} from '@ember/object';
 import { A } from '@ember/array';
+import ENV from 'akvov3/config/environment';
 
 export default Controller.extend({
   //for the demo map..
@@ -10,14 +11,15 @@ export default Controller.extend({
   lng:32.6149900, //Hive Collab Kampala
   zoom: 10,
   defaultLayer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-  defaultAttr: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+  defaultAttr: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   nightMode: false, //change the tile layer based on checked value
   tileLayers:[
     {label: 'stamen terrain', value: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'},
     {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', attrValue: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'},
     {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
-    {label: 'Google streets', value: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'} 
+    {label: 'Google streets', value: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'},
+    {label: 'Mapbox street', value: 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=ENV.MAPBOX_token'} 
   ],
    //dealing with dynamic location details.
    locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
@@ -72,8 +74,9 @@ export default Controller.extend({
     },
     //show the summary details of data point via teh modal.
     showModal(e){
-      console.log('yeah i can see summary',e.latlng)
+      //console.log('yeah i can see summary',e.latlng)
       //get these values-> show the data point in summary details
+      console.log('MAP box stuff', ENV.MAPBOX_token)
     }
   },
     //maybe u need to observe teh selectedLayer to change the attriValue.

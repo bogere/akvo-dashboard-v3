@@ -19,11 +19,13 @@ module.exports = function(environment) {
 
     APP: {
       // Here you can pass flags/options to your application instance
-      // when it is created
-      
+      // when it is created  
       //Set a default language that is used as a fallback  in case user has not chosen
-      defaultLocale: 'en'
-    }
+      defaultLocale: 'en',
+    
+    },
+    //Mapbox Access token must be accessed from the system environment.
+    MAPBOX_token: process.env['MAPBOX_ACCESS_TOKEN']
   };
 
   if (environment === 'development') {
