@@ -19,7 +19,7 @@ export default Controller.extend({
     {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
     {label: 'Google streets', value: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'},
-    {label: "Mapbox street", value: "https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token="} 
+    {label: "Mapbox street", value: "https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token="+ENV.MAPBOX_token+""} 
   ],
    //dealing with dynamic location details.
    locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
@@ -56,6 +56,7 @@ export default Controller.extend({
     //changing the tile layers dynamically.
     changeLayer(){
      var selectedLayer = this.get('selectedOption')
+      console.log(selectedLayer)
       this.set('defaultLayer', selectedLayer)
       //this.set('defaultAttr', attrValue ) //work on this later pliz. for the select box.
       //what about Mary solution for the power select. think?????
