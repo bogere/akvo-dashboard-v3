@@ -15,11 +15,11 @@ export default Controller.extend({
   nightMode: false, //change the tile layer based on checked value
   tileLayers:[
     {label: 'stamen terrain', value: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'},
-    {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', attrValue: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'},
-    {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
+    {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'},
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
     {label: "Mapbox street", value:`https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`},
-    {label: "Mapbox satellite", value: "https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token="+ENV.MAPBOX_token+""} 
+    {label: "Mapbox satellite", value: "https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token="+ENV.MAPBOX_token+""},
+    {label: 'Mapbox terrain', value: `https://api.tiles.mapbox.com/v4/mapbox.mapbox-terrain-v2/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}` } 
   ],
    //dealing with dynamic location details.
    locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
