@@ -19,7 +19,7 @@ export default Controller.extend({
     {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
     {label: 'Google streets', value: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'},
-    {label: 'Mapbox street', value: 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=ENV.MAPBOX_token'} 
+    {label: "Mapbox street", value: "https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=ENV.MAPBOX_token"} 
   ],
    //dealing with dynamic location details.
    locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
@@ -76,7 +76,7 @@ export default Controller.extend({
     showModal(e){
       //console.log('yeah i can see summary',e.latlng)
       //get these values-> show the data point in summary details
-      console.log('MAP box stuff', ENV.MAPBOX_token)
+      console.log('MAP box stuff', ENV.MAPBOX_token)//string
     }
   },
     //maybe u need to observe teh selectedLayer to change the attriValue.
