@@ -18,8 +18,8 @@ export default Controller.extend({
     {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', attrValue: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'},
     {label: 'night',value:'https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png'},
     {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
-    {label: 'Google streets', value: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'},
-    {label: "Mapbox street", value: "https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token="+ENV.MAPBOX_token+""} 
+    {label: "Mapbox street", value:`https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`},
+    {label: "Mapbox satellite", value: "https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token="+ENV.MAPBOX_token+""} 
   ],
    //dealing with dynamic location details.
    locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
