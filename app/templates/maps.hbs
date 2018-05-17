@@ -23,8 +23,7 @@
               {{/if}}
              {{!u need to play with the markers n popups}}
              {{#each locationPoints as |POI|}}
-               {{#marker-layer  location = POI.dataPoint onClick=(action 'showModal')
-                   icon =(icon iconUrl = "/images/maps/blueMarker.png")}}
+               {{#marker-layer  location = POI.dataPoint onClick=(action 'showModal')}}
                   {{#popup-layer}}
                      <h3>{{POI.title}}</h3>
                       {{POI.street}}<br>
