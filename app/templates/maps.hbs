@@ -18,13 +18,13 @@
              {{!-- Specify child layer components here --}}
                 {{! base layers ==> streets n satellite}}
                {{#layer-group name = "streets" baselayer=true default=true}}
-                    {{tile-layer url = "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
+                    {{tile-layer url=mapBox.street attribution=defaultAttr}}
                {{/layer-group}}
                {{#layer-group name = "satellite" baselayer=true}}
-                  {{tile-layer url = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"}}
+                  {{tile-layer url=mapBox.satellite attribution=defaultAttr}}
                {{/layer-group}}
                {{#layer-group name = "terrain" baselayer=true}}
-                  {{tile-layer url ="https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png"}}
+                  {{tile-layer url=mapBox.terrain  attribution=defaultAttr}}
                {{/layer-group}}
                 {{! end of the base layers}}
              {{!u need to play with the markers n popups}}

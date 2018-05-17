@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
-import {computed, observer} from '@ember/object';
+import EmberObj , {computed, observer} from '@ember/object';
 import { A } from '@ember/array';
+//import EmberObj from '@ember/object';
 import ENV from 'akvov3/config/environment';
 
 export default Controller.extend({
@@ -10,17 +11,14 @@ export default Controller.extend({
   lat:0.3262600,
   lng:32.6149900, //Hive Collab Kampala
   zoom: 10,
-  defaultLayer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
   defaultAttr: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   nightMode: false, //change the tile layer based on checked value
-  tileLayers:[
-    {label: 'stamen terrain', value: 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'},
-    {label: 'openstreet', value: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'},
-    {label: 'Eris', value: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'},
-    {label: "Mapbox street", value:`https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`},
-    {label: "Mapbox satellite", value: "https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token="+ENV.MAPBOX_token+""},
-    {label: 'Mapbox terrain', value: `https://api.tiles.mapbox.com/v4/mapbox.mapbox-terrain-v2/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}` } 
-  ],
+  
+  mapBox: EmberObj.create({
+    street: `https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`,
+    satellite: `https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`,
+    terrain: `https://api.tiles.mapbox.com/v4/mapbox.mapbox-terrain-v2/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`
+  }),
    //dealing with dynamic location details.
    locationPoints: A([ //why u need to use the ember Array... so that they r observable n as properties
      {
@@ -58,14 +56,6 @@ export default Controller.extend({
      var selectedLayer = this.get('selectedOption')
       console.log(selectedLayer)
       this.set('defaultLayer', selectedLayer)
-      //this.set('defaultAttr', attrValue ) //work on this later pliz. for the select box.
-      //what about Mary solution for the power select. think?????
-      //quick hack for selecting attrValue.
-        /*if (selectedLayer == 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png') {
-          console.log('stamen attribute !!!!')
-          this.set('defaultAttr', 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>')
-        }*/
-        //please avoid using hard coded values... Ember.Object with these attribution values
     },
     //updating the center for teh map..
     updateCenter(e){
@@ -77,7 +67,6 @@ export default Controller.extend({
     showModal(e){
       //console.log('yeah i can see summary',e.latlng)
       //get these values-> show the data point in summary details
-      console.log('MAP box stuff', ENV.MAPBOX_token)//string
     },
     //
     layerControlEvent(evt){
