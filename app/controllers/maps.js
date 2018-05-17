@@ -51,12 +51,6 @@ export default Controller.extend({
   
   
   actions:{
-    //changing the tile layers dynamically.
-    changeLayer(){
-     var selectedLayer = this.get('selectedOption')
-      console.log(selectedLayer)
-      this.set('defaultLayer', selectedLayer)
-    },
     //updating the center for teh map..
     updateCenter(e){
        let center = e.target.getCenter(); //cordinates of the center
@@ -72,17 +66,6 @@ export default Controller.extend({
     layerControlEvent(evt){
        //https://github.com/canufeel/ember-leaflet-layer-control      
     }
-  },
-    //maybe u need to observe teh selectedLayer to change the attriValue.
-    updateAttribution: observer('selectedOption', function(){
-       //in this case selectedOption is the selectedLayer..
-        let self = this; // this only changes the context.
-        let selectedLayer = this.get('selectedOption')
-        if (selectedLayer == 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png') {
-           console.log('stamen!!!!!')
-           self.set('defaultAttr', 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>')
-        }
-    }),
-    name: 'Bogere Goldsoft',
-    college: 'CoCIS'
+  }
+  
 });

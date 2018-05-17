@@ -1,15 +1,6 @@
 <section id="main" class="mapFlow floats-in middleSection" role="main">
-  {{select-box
-    content = tileLayers
-    selection= selectedOption
-    optionLabelPath="label"
-    optionValuePath="value"
-    prompt = 'select your favourite map layer'
-    didChangeAction= 'changeLayer'
-   }}
    {{!hello-mary name = name college = college}}
     <p>Latitude:<code>{{lat}}</code> / longitude :<code>{{lng}}</code></p><br>
-    <p><label>{{input type = "checkbox" checked = nightMode}}Night Mode</label></p>
     
   <div id="dropdown-holder">
      <div id="mapDetailsHideShow" class="drawHandle hideMapD"></div>
