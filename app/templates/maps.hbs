@@ -16,13 +16,20 @@
   </div>
        {{#leaflet-map lat=lat lng=lng zoom=zoom onMoveend=(action 'updateCenter')}}
              {{!-- Specify child layer components here --}}
-               {{#layer-group name = "tileLayer#1" baselayer=true default=true}}
+                {{! base layers ==> streets n satellite}}
+               {{#layer-group name = "streets" baselayer=true default=true}}
                     {{tile-layer url = "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
                {{/layer-group}}
-               {{#layer-group name = "tileLayer#2" baselayer=true}}
+               {{#layer-group name = "satellite" baselayer=true}}
                   {{tile-layer url = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"}}
                {{/layer-group}}
+               {{#layer-group name = "terrain" baselayer=true}}
+                  {{tile-layer url ="https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png"}}
+               {{/layer-group}}
+                {{! end of the base layers}}
              {{!u need to play with the markers n popups}}
+             {{! overlayers - placed on the baselayers}}
+            {{#layer-group name = "markerLayer#1" default=true}}
              {{#each locationPoints as |POI|}}
                {{#marker-layer  location = POI.dataPoint onClick=(action 'showModal')}}
                   {{#popup-layer}}
@@ -31,13 +38,16 @@
                   {{/popup-layer}}
                {{/marker-layer}}
              {{/each}}
+            {{/layer-group}} 
              
              {{! what about the polygon layer that can show the cluster}}
-             {{#polygon-layer locations = dangerZone color = "red" }}
-                {{#tooltip-layer sticky = true}}
-                   COOL ZONE
-                {{/tooltip-layer}}
-             {{/polygon-layer}}
+             {{#layer-group name = "chilZone"}}
+               {{#polygon-layer locations = dangerZone color = "red" }}
+                   {{#tooltip-layer sticky = true}}
+                      COOL ZONE
+                   {{/tooltip-layer}}
+               {{/polygon-layer}}
+             {{/layer-group}}
         {{! Add the leaflet-layer-control here}}
             {{layer-control handler =(action "layerControlEvent")}}
       {{/leaflet-map}}
