@@ -16,11 +16,12 @@
   </div>
        {{#leaflet-map lat=lat lng=lng zoom=zoom onMoveend=(action 'updateCenter')}}
              {{!-- Specify child layer components here --}}
-              {{#if nightMode}}
-                {{tile-layer url = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png" attribution = defaultAttr}}
-              {{else}}
-                {{tile-layer url= defaultLayer attribution = defaultAttr}} 
-              {{/if}}
+               {{#layer-group name = "tileLayer#1" baselayer=true default=true}}
+                    {{tile-layer url = "http://{s}.tile.osm.org/{z}/{x}/{y}.png"}}
+               {{/layer-group}}
+               {{#layer-group name = "tileLayer#2" baselayer=true}}
+                  {{tile-layer url = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"}}
+               {{/layer-group}}
              {{!u need to play with the markers n popups}}
              {{#each locationPoints as |POI|}}
                {{#marker-layer  location = POI.dataPoint onClick=(action 'showModal')}}
@@ -37,7 +38,8 @@
                    COOL ZONE
                 {{/tooltip-layer}}
              {{/polygon-layer}}
-        
+        {{! Add the leaflet-layer-control here}}
+            {{layer-control handler =(action "layerControlEvent")}}
       {{/leaflet-map}}
 
 </section>

@@ -78,6 +78,10 @@ export default Controller.extend({
       //console.log('yeah i can see summary',e.latlng)
       //get these values-> show the data point in summary details
       console.log('MAP box stuff', ENV.MAPBOX_token)//string
+    },
+    //
+    layerControlEvent(evt){
+       //https://github.com/canufeel/ember-leaflet-layer-control      
     }
   },
     //maybe u need to observe teh selectedLayer to change the attriValue.
