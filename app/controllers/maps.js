@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import EmberObj , {computed, observer} from '@ember/object';
 import { A } from '@ember/array';
-//import EmberObj from '@ember/object';
 import ENV from 'akvov3/config/environment';
 
 export default Controller.extend({
