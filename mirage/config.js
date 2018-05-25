@@ -37,9 +37,9 @@ export default function() {
           "count": 1,
           "detailsId": 8943078,
           "keyId": 17886156,
-          "latitude": -11.334335,
+          "latitude": 0.3372743,
           "level": 0,
-          "longitude": -49.251078,
+          "longitude": 32.5921307,
           "markType": null,
           "surveyId": 125001
           },
@@ -48,9 +48,9 @@ export default function() {
           "count": 1,
           "detailsId": 8943137,
           "keyId": 17886274,
-          "latitude": -11.334335,
+          "latitude": 0.334949619708498,
           "level": 0,
-          "longitude": -49.251078,
+          "longitude": 32.58311441970849,
           "markType": null,
           "surveyId": 13774000
           },
@@ -59,13 +59,13 @@ export default function() {
           "count": 1,
           "detailsId": 8943143,
           "keyId": 17886286,
-          "latitude": -11.334335,
+          "latitude": 0.3340316,
           "level": 0,
-          "longitude": -49.251078,
+          "longitude": 32.5889985,
           "markType": null,
           "surveyId": 13774000
-         },
-         {
+         }
+         /*{
           "collectionDate": 1400072462342,
           "count": 1,
           "detailsId": 9873106,
@@ -75,7 +75,7 @@ export default function() {
           "longitude": -49.251078,
           "markType": null,
           "surveyId": 125001
-           }
+           }*/
           ] //placemarks root key
          };
       })

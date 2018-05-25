@@ -48,6 +48,27 @@ export default Controller.extend({
      return locArray;
   }),
   
+  //dealing with location details from the backend part.
+   locationDetails:computed(function(){
+      let locs = this.get('model'),
+      locArray = [];
+      locs.forEach((item,index)=>{
+          let placeObj = {
+            //model.get('attribute-name')
+            //template(hbs) ==> {{model.keyId}}
+             keyId: item.get('keyId'),
+        	   count: item.get('count'),
+        	   level: item.get('level'),
+        	   surveyId: item.get('surveyId'),
+        	   detailsId: item.get('detailsId'),
+        	   collectionDate: item.get('collectionDate'),
+             dataPoint: [item.get('latitude'), item.get('longitude')]
+          }
+         locArray.push(placeObj)
+      })
+       console.log('my cordinates', locArray)
+      return locArray;
+   }),
   
   actions:{
     //updating the center for teh map..
