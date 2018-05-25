@@ -32,7 +32,7 @@ export default function() {
       //for the placemarks..
       this.get('/placemarks', function(){
          return {
-           "placemarks": [{
+         "placemarks": [{
           "collectionDate": 1400077495009,
           "count": 1,
           "detailsId": 8943078,
@@ -42,8 +42,8 @@ export default function() {
           "longitude": -49.251078,
           "markType": null,
           "surveyId": 125001
-      },
-      {
+          },
+        {
           "collectionDate": 1400233173034,
           "count": 1,
           "detailsId": 8943137,
@@ -53,8 +53,8 @@ export default function() {
           "longitude": -49.251078,
           "markType": null,
           "surveyId": 13774000
-      },
-      {
+          },
+         {
           "collectionDate": 1400158264440,
           "count": 1,
           "detailsId": 8943143,
@@ -64,8 +64,8 @@ export default function() {
           "longitude": -49.251078,
           "markType": null,
           "surveyId": 13774000
-      },
-      {
+         },
+         {
           "collectionDate": 1400072462342,
           "count": 1,
           "detailsId": 9873106,
@@ -75,7 +75,7 @@ export default function() {
           "longitude": -49.251078,
           "markType": null,
           "surveyId": 125001
-            }
+           }
           ] //placemarks root key
          };
       })
