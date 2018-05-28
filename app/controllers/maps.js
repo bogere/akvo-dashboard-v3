@@ -4,12 +4,12 @@ import { A } from '@ember/array';
 import ENV from 'akvov3/config/environment';
 
 export default Controller.extend({
-  //for the demo map..
   //Notice that we specified the center of the map and its zoom level passing
   // regular properties to the component, bound to the controller. 
-  lat:0.3262600,
-  lng:32.6149900, //Hive Collab Kampala
-  zoom: 10,
+  //target teh center of the map when beginning.
+  lat: 0,
+  lng:0,
+  zoom: 1, //zoom level 10 makes focus on the map smaller. 
   defaultAttr: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   nightMode: false, //change the tile layer based on checked value
   
@@ -66,7 +66,6 @@ export default Controller.extend({
           }
          locArray.push(placeObj)
       })
-       console.log('my cordinates', locArray)
       return locArray;
    }),
   

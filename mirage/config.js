@@ -37,9 +37,9 @@ export default function() {
           "count": 1,
           "detailsId": 8943078,
           "keyId": 17886156,
-          "latitude": 0.3372743,
+          "latitude": -11.334335,
           "level": 0,
-          "longitude": 32.5921307,
+          "longitude": -49.251078,
           "markType": null,
           "surveyId": 125001
           },
@@ -48,9 +48,9 @@ export default function() {
           "count": 1,
           "detailsId": 8943137,
           "keyId": 17886274,
-          "latitude": 0.334949619708498,
+          "latitude": -6.169694,
           "level": 0,
-          "longitude": 32.58311441970849,
+          "longitude": 35.752277,
           "markType": null,
           "surveyId": 13774000
           },
@@ -59,23 +59,34 @@ export default function() {
           "count": 1,
           "detailsId": 8943143,
           "keyId": 17886286,
-          "latitude": 0.3340316,
+          "latitude": -0.614335,
           "level": 0,
-          "longitude": 32.5889985,
+          "longitude": 30.650189,
           "markType": null,
           "surveyId": 13774000
-         }
-         /*{
-          "collectionDate": 1400072462342,
-          "count": 1,
-          "detailsId": 9873106,
-          "keyId": 19746212,
-          "latitude": -11.334335,
-          "level": 0,
-          "longitude": -49.251078,
-          "markType": null,
-          "surveyId": 125001
-           }*/
+        },
+        {
+         "collectionDate": 1403274236657, 
+         "count": 1, 
+         "detailsId": 17913062, 
+         "keyId": 35826124, 
+         "latitude": -0.613333, 
+         "level": 0, 
+         "longitude": 30.65833, 
+         "markType": null, 
+         "surveyId": 18004010
+         },
+         {
+           "collectionDate": 1328619612000, 
+           "count": 1, 
+           "detailsId": 530003, 
+           "keyId": 1060006, 
+           "latitude": -1.29632474, 
+           "level": 0, 
+           "longitude": 36.76036076, 
+           "markType": null, 
+           "surveyId": 391005
+          }
           ] //placemarks root key
          };
       })
