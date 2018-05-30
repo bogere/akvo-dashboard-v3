@@ -29,65 +29,14 @@ export default function() {
   
    this.namespace = '/api'; //config by default.. suppose it was nodejs server... this.urlPrefix = 'http://localhost:3010'
    
-      //for the placemarks..
-      this.get('/placemarks', function(){
-         return {
-         "placemarks": [{
-          "collectionDate": 1400077495009,
-          "count": 1,
-          "detailsId": 8943078,
-          "keyId": 17886156,
-          "latitude": -11.334335,
-          "level": 0,
-          "longitude": -49.251078,
-          "markType": null,
-          "surveyId": 125001
-          },
-        {
-          "collectionDate": 1400233173034,
-          "count": 1,
-          "detailsId": 8943137,
-          "keyId": 17886274,
-          "latitude": -6.169694,
-          "level": 0,
-          "longitude": 35.752277,
-          "markType": null,
-          "surveyId": 13774000
-          },
-         {
-          "collectionDate": 1400158264440,
-          "count": 1,
-          "detailsId": 8943143,
-          "keyId": 17886286,
-          "latitude": -0.614335,
-          "level": 0,
-          "longitude": 30.650189,
-          "markType": null,
-          "surveyId": 13774000
-        },
-        {
-         "collectionDate": 1403274236657, 
-         "count": 1, 
-         "detailsId": 17913062, 
-         "keyId": 35826124, 
-         "latitude": -0.613333, 
-         "level": 0, 
-         "longitude": 30.65833, 
-         "markType": null, 
-         "surveyId": 18004010
-         },
-         {
-           "collectionDate": 1328619612000, 
-           "count": 1, 
-           "detailsId": 530003, 
-           "keyId": 1060006, 
-           "latitude": -1.29632474, 
-           "level": 0, 
-           "longitude": 36.76036076, 
-           "markType": null, 
-           "surveyId": 391005
-          }
-          ] //placemarks root key
-         };
+      this.get('/placemarks', function(schema,request){
+              
+           //return schema.placemarks.all()
+          //test something.. return specific record...
+          //return schema.placemarks.where({detailsId: 8943078}) //specific record. in form of array
+          return schema.placemarks.findBy({detailsId: 8943078 }) //returns the 1st record that matches
+          
       })
+      
+      //this.passthrough('/datas') //it is not yet clear to me.
 }
