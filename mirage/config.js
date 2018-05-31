@@ -31,11 +31,16 @@ export default function() {
    
       this.get('/placemarks', function(schema,request){
               
-           //return schema.placemarks.all()
+            return schema.placemarks.all()
           //test something.. return specific record...
           //return schema.placemarks.where({detailsId: 8943078}) //specific record. in form of array
-          return schema.placemarks.findBy({detailsId: 8943078 }) //returns the 1st record that matches
-          
+          //return schema.placemarks.findBy({detailsId: 8943078 }) //returns the 1st record that matches      
+      })
+      
+      //this.get('/placemarks/:id');
+      this.get('/placemarks/:id', function(schema,request){
+        let keyId =  request.params.id;
+         return schema.placemarks.findBy({keyId: keyId})
       })
       
       //this.passthrough('/datas') //it is not yet clear to me.

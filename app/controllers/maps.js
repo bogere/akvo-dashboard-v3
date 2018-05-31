@@ -2,17 +2,24 @@ import Controller from '@ember/controller';
 import EmberObj , {computed, observer} from '@ember/object';
 import { A } from '@ember/array';
 import ENV from 'akvov3/config/environment';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   //Notice that we specified the center of the map and its zoom level passing
   // regular properties to the component, bound to the controller. 
   //target teh center of the map when beginning.
+  store: service(),
   lat: 0,
   lng:0,
   zoom: 1, //zoom level 10 makes focus on the map smaller. 
   defaultAttr: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   nightMode: false, //change the tile layer based on checked value
   
+  randomVlu: computed(function(){
+    let pj = this.get('store').findRecord('placemark',17886156);
+    console.log(pj.get('keyId'));
+    return pj;
+  }),
   mapBox: EmberObj.create({
     street: `https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`,
     satellite: `https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`,
