@@ -44,7 +44,7 @@ export default [
   "level": 0, 
   "longitude": 30.65833, 
   "markType": null, 
-  "surveyId": 18004010
+  "surveyId": 125001
   },
   {
     "collectionDate": 1328619612000, 
@@ -55,7 +55,7 @@ export default [
     "level": 0, 
     "longitude": 36.76036076, 
     "markType": null, 
-    "surveyId": 391005
+    "surveyId": 13774000
   },
   {
       "collectionDate": 1339065239000, 
@@ -66,7 +66,7 @@ export default [
       "level": 0, 
       "longitude": 36.7905733168, 
       "markType": null, 
-      "surveyId": null
+      "surveyId": 125001
     }, 
     {
       "collectionDate": 1298632392000, 
@@ -88,7 +88,7 @@ export default [
       "level": 0, 
       "longitude": 36.76032364368439, 
       "markType": null, 
-      "surveyId": 391005
+      "surveyId": 13774000
     }, 
     {
       "collectionDate": 1294722944000, 

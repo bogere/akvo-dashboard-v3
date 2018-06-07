@@ -10,38 +10,31 @@ export default function() {
 
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
   // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
-  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
+     this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
-  /*
-    Shorthand cheatsheet:
-
-    this.get('/posts');
-    this.post('/posts');
-    this.get('/posts/:id');
-    this.put('/posts/:id'); // or this.patch
-    this.del('/posts/:id');
-
-    http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
-  */
-  
   //the above comments should help when setting fake backend server fro ur app.. mimic API.
   //which is where we can define our API endpoints and our data.
   
    this.namespace = '/api'; //config by default.. suppose it was nodejs server... this.urlPrefix = 'http://localhost:3010'
-   
+       
+       //retrieving the placemarks according to teh surveyId
       this.get('/placemarks', function(schema,request){
-              
-            return schema.placemarks.all()
-          //test something.. return specific record...
-          //return schema.placemarks.where({detailsId: 8943078}) //specific record. in form of array
-          //return schema.placemarks.findBy({detailsId: 8943078 }) //returns the 1st record that matches      
+           let selectedSurvey = request.queryParams.surveyId;//http://navyuginfo.com/use-ember-cli-mirage/
+              if (selectedSurvey) { //if a surveyId is selected.
+                 return schema.placemarks.where({surveyId:selectedSurvey})
+              } else {
+                 return schema.placemarks.all()
+              }  
+        
       })
       
-      //this.get('/placemarks/:id');
-      this.get('/placemarks/:id', function(schema,request){
-        let keyId =  request.params.id;
-         return schema.placemarks.findBy({keyId: keyId})
+      //retrieving the placemark-details basing on the placemarkId... keyId of the placemark.
+      this.get('/placemark_details', function(schema,request){
+         let selectedkeyId = request.queryParams.placemarkId;
+         if (selectedkeyId) {
+            return schema.placemarks.where({placemarkId: selectedkeyId})
+         }
       })
-      
+       
       //this.passthrough('/datas') //it is not yet clear to me.
 }

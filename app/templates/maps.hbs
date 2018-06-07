@@ -1,6 +1,14 @@
 <section id="main" class="mapFlow floats-in middleSection" role="main">
-    <p>Latitude:<code>{{lat}}</code> / longitude :<code>{{lng}}</code></p><br>
-    <p>hello{{randomVlu.keyId}}</p>
+    {{select-box
+       content = projectSurveys
+       selection= selectedSurvey
+       optionLabelPath = "label"
+       optionValuePath="value"
+       prompt = "select the survey"
+       class = "select-box-widget"
+       didChangeAction = 'showMarkers'     
+    }}
+    
   <div id="dropdown-holder">
      <div id="mapDetailsHideShow" class="drawHandle hideMapD"></div>
   </div>
@@ -23,21 +31,13 @@
              {{#each locationDetails as |POI|}}
                {{#marker-layer  location = POI.dataPoint onClick=(action 'showModal')}}
                   {{#popup-layer}}
-                     <h3>{{POI.keyId}}</h3>
+                     <h3>{{POI.surveyId}}</h3>
                       {{POI.detailsId}}<br>
                   {{/popup-layer}}
                {{/marker-layer}}
              {{/each}}
             {{/layer-group}} 
              
-             {{! what about the polygon layer that can show the cluster}}
-             {{!#layer-group name = "chilZone"}}
-               {{!#polygon-layer locations = dangerZone color = "red" }}
-                   {{!#tooltip-layer sticky = true}}
-                      COOL ZONE
-                   {{!/tooltip-layer}}
-               {{!/polygon-layer}}
-             {{!/layer-group}}
         {{! Add the leaflet-layer-control here}}
             {{layer-control handler =(action "layerControlEvent")}}
       {{/leaflet-map}}
