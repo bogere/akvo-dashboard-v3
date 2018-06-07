@@ -37,12 +37,19 @@ export default Controller.extend({
     //show the summary details of data point via teh modal.
     showModal(e){
          e.preventDefault;
-         console.log(this.get('keyId'))
+         //console.log(this.get('keyId'))
       //console.log('yeah i can see summary',e.latlng)
       //get these values-> show the data point in summary details
       //can u get the keyId/surveyId when i click on the marker..
        /*let marker = this.get('POI');
        console.log(marker)*/  //when the keyId is selected, use it to search for placemark-details
+        //testing the store.filter() thing here.
+        /*this.store.query('placemark', {filter:{keyId:17886274}}).then(function(result){
+           console.log(result) //pliz u shall solve this later
+        })*/
+         //console.log(this.get('locationDetails'))
+         let selectedMarker = this.get('locationDetails').filterBy('keyId',17886274)
+         console.log(selectedMarker)
     },
     //
     layerControlEvent(evt){
