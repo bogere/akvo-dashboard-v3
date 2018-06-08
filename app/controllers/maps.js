@@ -38,7 +38,7 @@ export default Controller.extend({
     showModal(e){
          e.preventDefault;
          //console.log(this.get('keyId'))
-      //console.log('yeah i can see summary',e.latlng)
+        //console.log('yeah i can see summary',e.latlng)
       //get these values-> show the data point in summary details
       //can u get the keyId/surveyId when i click on the marker..
        /*let marker = this.get('POI');
@@ -47,9 +47,27 @@ export default Controller.extend({
         /*this.store.query('placemark', {filter:{keyId:17886274}}).then(function(result){
            console.log(result) //pliz u shall solve this later
         })*/
-         //console.log(this.get('locationDetails'))
-         let selectedMarker = this.get('locationDetails').filterBy('keyId',17886274)
-         console.log(selectedMarker)
+          // console.log(this.get('locationDetails'))
+           let locArray = this.get('locationDetails')
+           //console.log(locArray)
+          /*let selectedMarker = this.get('locationDetails').filterBy('keyId',17886274)
+                                                          .filterBy('detailsId',8943137); //works */
+         /*let selectedMarker = this.get('locationDetails').filterBy('dataPoint[0]',-6.169694)
+                                                          .filterBy('dataPoint[1]',35.752277)*/
+        //perharps give this a try n see 
+        //let selectedMarker = this.get('locationDetails').filterBy('dataPoint', [-6.169694,35.752277]);
+         //it seems that filterBy is giving u headache.. try this pliz..
+         //let selectedMarker = this.get('locationDetails')
+          /*let selectedMarker = locArray.filter(function(elem){
+             return elem.dataPoint.[0]== 6.169694 && elem.dataPoint.[1] == 35.752277
+          })*/
+            /*for (var i = 0; i < locArray.length; i++) {
+               console.log(locArray[i])
+            }*/
+             locArray.forEach((item,index)=>{
+                console.log( 'Latitude' + item.dataPoint[0] + 'Longitude' + item.dataPoint[1])
+             })
+         
     },
     //
     layerControlEvent(evt){
