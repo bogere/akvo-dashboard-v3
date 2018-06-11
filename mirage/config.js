@@ -29,11 +29,19 @@ export default function() {
       })
       
       //retrieving the placemark-details basing on the placemarkId... keyId of the placemark.
-      this.get('/placemark_details', function(schema,request){
-         let selectedkeyId = request.queryParams.placemarkId;
-         if (selectedkeyId) {
-            return schema.placemarks.where({placemarkId: selectedkeyId})
-         }
+      /*this.get('/placemark-details', function(schema,request){
+         /*let _selectedkeyId = request.queryParams.selectedkeyId;
+         if (_selectedkeyId) {
+            return schema.placemark-details.where({placemarkId: _selectedkeyId})
+         }*/
+           //return schema.placemarkDetails.all()
+           //return schema.placemark-details.all()
+      //})
+      //this.get('/placemark-details')
+      //well iam testing this route handler for the placemarkdetails.. which is not daherized
+      this.get('/placemarkdetails', function(schema,request){
+         //let _selectedkeyId = request.queryParams.selectedkeyId;
+         return schema.placemarkdetails.all()
       })
        
       //this.passthrough('/datas') //it is not yet clear to me.
