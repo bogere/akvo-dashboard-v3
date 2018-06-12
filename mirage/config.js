@@ -40,9 +40,21 @@ export default function() {
       //this.get('/placemark-details')
       //well iam testing this route handler for the placemarkdetails.. which is not daherized
       this.get('/placemarkdetails', function(schema,request){
-         //let _selectedkeyId = request.queryParams.selectedkeyId;
-         return schema.placemarkdetails.all()
+          let _selectedkeyId = request.queryParams.selectedkeyId;
+           if (_selectedkeyId) {
+                return schema.placemarkdetails.where({placemarkId:_selectedkeyId})
+               //return schema.placemarkdetails.findBy({placemarkId: _selectedkeyId})
+              /*let result = schema.placemarkdetails.where({placemarkId:_selectedkeyId})
+              return Array.from(result)*/
+           }
+         //return schema.placemarkdetails.all()
       })
-       
+    
+       //this.get('/placemarkDetails') it worked perfectly.
+       this.get('/placemarkDetails', function(schema,request){
+          //return schema.placemark-details.all() //"Ember Data Request GET /api/placemarkDetails returned a 500
+           //return schema.placemark_details.all()//Cannot read property 'all' of undefined
+           return schema.placemarkDetails.all() //response 0... 
+       })
       //this.passthrough('/datas') //it is not yet clear to me.
 }

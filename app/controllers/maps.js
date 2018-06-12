@@ -52,7 +52,14 @@ export default Controller.extend({
            let selectedkeyId = selectedMarker[0].keyId;
            
            //i need to query the store for the placemark details.
-           this.get('store').query('placemark-detail', {placemarkId: selectedkeyId})
+             this.get('store').query('placemarkdetail', {placemarkId: selectedkeyId})
+                .then(function(result){
+                  console.log(result)
+                })
+           /*this.get('store').queryRecord('placemarkdetail', {placemarkId: selectedkeyId})
+               .then(function(result){
+                 console.log('placemarkdetails',result[0].get('data')) //getting only null values
+               }) // https://github.com/emberjs/data/issues/4255*/
          
     },
     //
