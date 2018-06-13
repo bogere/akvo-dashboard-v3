@@ -29,14 +29,9 @@ export default function() {
       })
       
       
-       //this.get('/placemarkDetails') it worked perfectly.
        this.get('/placemarkDetails', function(schema,request){
-          //return schema.placemark-details.all() //"Ember Data Request GET /api/placemarkDetails returned a 500
-           //return schema.placemark_details.all()//Cannot read property 'all' of undefined
-           //return schema.placemarkDetails.all() //works perefectly for all items.
             //let _selectedkeyId = request.queryParams.selectedkeyId; wrong filter key.
             let _selectedkeyId = request.queryParams.placemarkId;
-            console.log('query params',_selectedkeyId)
             if (_selectedkeyId) {
                return schema.placemarkDetails.where({placemarkId: _selectedkeyId})
             }

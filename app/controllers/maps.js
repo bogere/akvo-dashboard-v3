@@ -37,31 +37,46 @@ export default Controller.extend({
     //show the summary details of data point via teh modal.
     showModal(e){
          e.preventDefault;
-         //console.log(this.get('keyId'))
-        //console.log('yeah i can see summary',e.latlng)
+         let self = this;
+         //console.log('yeah i can see summary',e.latlng)
           // console.log(this.get('locationDetails'))
+           let marker = e.latlng;
+           console.log(marker.lng)
            //let locArray = this.get('locationDetails')
            //console.log(locArray)
           /*let selectedMarker = this.get('locationDetails').filterBy('keyId',17886274)
                                                           .filterBy('detailsId',8943137); //works */
-         let selectedMarker = this.get('locationDetails').filterBy('dataPoint.0',-6.169694)
-                                                         .filterBy('dataPoint.1',35.752277);
+         let selectedMarker = this.get('locationDetails').filterBy('dataPoint.0',marker.lat)
+                                                         .filterBy('dataPoint.1',marker.lng);
           //this is the way u access nested properties of ember property
              //console.log(selectedMarker)
           //use the keyId for the selected marker to retrieve the placemark-details.
-           //let selectedkeyId = selectedMarker[0].keyId;
-           let selectedkeyId = '17886274';
+             let selectedkeyId = selectedMarker[0].keyId;
+            //let selectedkeyId = '17886274';
            
            //i need to query the store for the placemark details.
-             /*this.get('store').query('placemark-detail', {placemarkId: selectedkeyId})
-                .then(function(result){
-                  console.log(result)
-                })*/
-           this.get('store').queryRecord('placemark-detail', {placemarkId: selectedkeyId})
-               .then(function(result){
-                  console.log(result)
-                 //console.log('placemarkdetails',result[0].get('data')) //getting only null values
-               }) // https://github.com/emberjs/data/issues/4255*/
+             this.get('store').query('placemark-detail', {placemarkId: selectedkeyId}) 
+                .then(function(results){////filter key--> placemarkId//
+                  //just know the result --> model data.. so even if u use ..
+                  //even if u try to access in the template like this.
+                     let locMarker= [];
+                     results.forEach((item,index)=>{ //it just  1 item in the array
+                        locMarker.push({
+                          collectionDate:item.get('collectionDate'),
+                          keyId: item.get('keyId'),
+                          placemarkId: item.get('placemarkId'),
+                          questionText: item.get('questionText'),
+                          questionType: item.get('questionType'),
+                          stringValue: item.get('stringValue')                                          
+                        })
+                     })
+                     
+                    console.log('detailsInfo',locMarker)
+                    self.set('markerInfo', locMarker)
+                    //then in the template... u shall access it like this. {{markerInfo.keyId}}
+                     
+                })
+           
          
     },
     //
