@@ -40,25 +40,27 @@ export default Controller.extend({
          //console.log(this.get('keyId'))
         //console.log('yeah i can see summary',e.latlng)
           // console.log(this.get('locationDetails'))
-           let locArray = this.get('locationDetails')
+           //let locArray = this.get('locationDetails')
            //console.log(locArray)
           /*let selectedMarker = this.get('locationDetails').filterBy('keyId',17886274)
                                                           .filterBy('detailsId',8943137); //works */
          let selectedMarker = this.get('locationDetails').filterBy('dataPoint.0',-6.169694)
                                                          .filterBy('dataPoint.1',35.752277);
           //this is the way u access nested properties of ember property
-             console.log(selectedMarker)
+             //console.log(selectedMarker)
           //use the keyId for the selected marker to retrieve the placemark-details.
-           let selectedkeyId = selectedMarker[0].keyId;
+           //let selectedkeyId = selectedMarker[0].keyId;
+           let selectedkeyId = '17886274';
            
            //i need to query the store for the placemark details.
-             this.get('store').query('placemarkdetail', {placemarkId: selectedkeyId})
+             /*this.get('store').query('placemark-detail', {placemarkId: selectedkeyId})
                 .then(function(result){
                   console.log(result)
-                })
-           /*this.get('store').queryRecord('placemarkdetail', {placemarkId: selectedkeyId})
+                })*/
+           this.get('store').queryRecord('placemark-detail', {placemarkId: selectedkeyId})
                .then(function(result){
-                 console.log('placemarkdetails',result[0].get('data')) //getting only null values
+                  console.log(result)
+                 //console.log('placemarkdetails',result[0].get('data')) //getting only null values
                }) // https://github.com/emberjs/data/issues/4255*/
          
     },
@@ -69,12 +71,10 @@ export default Controller.extend({
     //show the markers for selected survey.
     showMarkers(){
        let _surveyId = this.get('selectedSurvey'),
-           self = this; //i want to refer to this controller
-       //console.log(this.get('locationCord')) //positive
-       //retrieve records from the store.
+           self = this;
+           
        if (_surveyId!== '') {
-         //this.get('store').query('placemark', {surveyId: surveyId})
-         //return this.get('store').query('rental', { city: param });
+         
           this.get('store').query('placemark', {surveyId: _surveyId})
             .then(function(result){ //recall the retrieving data from store returns promise
              
