@@ -560,5 +560,6 @@ export default {
 "_yes" : "Yes",
 "_you_can_regen_or_revoke_api_key_for_this_user" : "You can (re)generate or revoke api keys for this user",
 "_you_have_unsaved_changes" : "You have unsaved changes",
-"_your_report_is_being_prepared" : "Your report is being prepared"
+"_your_report_is_being_prepared" : "Your report is being prepared",
+"_hide": "Hide"
 };
