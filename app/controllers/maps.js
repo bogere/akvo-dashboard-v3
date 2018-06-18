@@ -12,7 +12,7 @@ export default Controller.extend({
   zoom: 1, //zoom level 10 makes focus on the map smaller. 
   defaultAttr: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   nightMode: false, //change the tile layer based on checked value
-  
+  showPlacemarkDetail: false,
   mapBox: EmberObj.create({
     street: `https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`,
     satellite: `https://api.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=${ENV.MAPBOX_token}`,
@@ -40,20 +40,14 @@ export default Controller.extend({
          let self = this;
          //console.log('yeah i can see summary',e.latlng)
           // console.log(this.get('locationDetails'))
-           let marker = e.latlng;
-           console.log(marker.lng)
-           //let locArray = this.get('locationDetails')
-           //console.log(locArray)
-          /*let selectedMarker = this.get('locationDetails').filterBy('keyId',17886274)
-                                                          .filterBy('detailsId',8943137); //works */
-         let selectedMarker = this.get('locationDetails').filterBy('dataPoint.0',marker.lat)
+          let marker = e.latlng,
+           
+              selectedMarker = this.get('locationDetails').filterBy('dataPoint.0',marker.lat)
                                                          .filterBy('dataPoint.1',marker.lng);
           //this is the way u access nested properties of ember property
              //console.log(selectedMarker)
           //use the keyId for the selected marker to retrieve the placemark-details.
-             let selectedkeyId = selectedMarker[0].keyId;
-            //let selectedkeyId = '17886274';
-           
+             let selectedkeyId = selectedMarker[0].keyId;         
            //i need to query the store for the placemark details.
              this.get('store').query('placemark-detail', {placemarkId: selectedkeyId}) 
                 .then(function(results){////filter key--> placemarkId//
@@ -74,7 +68,8 @@ export default Controller.extend({
                     console.log('detailsInfo',locMarker)
                     self.set('markerInfo', locMarker)
                     //then in the template... u shall access it like this. {{markerInfo.keyId}}
-                     
+                     //then u can show the sidebar part.. for the placemarkdetail info.
+                     self.set('showPlacemarkDetail',true) 
                 })
            
          
@@ -110,10 +105,13 @@ export default Controller.extend({
                   locArray.push(placeObj)       
              })
               self.set('locationDetails', locArray)
-              //console.log('my location', this.get('locationDetails'))
          })
          
        }
+    },
+    showDetails(evt){
+       //this.set('showPlacemarkDetail', false)
+       this.toggleProperty('showPlacemarkDetail') //this can hide n show sidebar
     }
   }
   

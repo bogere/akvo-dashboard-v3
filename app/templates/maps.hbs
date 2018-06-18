@@ -9,7 +9,7 @@
        didChangeAction = 'showMarkers'     
     }} 
   <div id="dropdown-holder">
-     <div id="mapDetailsHideShow" class="drawHandle hideMapD">{{t '_hide'}}</div>
+     <div id="mapDetailsHideShow" {{action 'showDetails'}}class="drawHandle hideMapD">{{t '_hide'}}</div>
   </div>
   <div id = "flowMap">
        {{#leaflet-map lat=lat lng=lng zoom=zoom onMoveend=(action 'updateCenter')}}
@@ -43,7 +43,9 @@
       {{/leaflet-map}}
  </div> <!--end of the flowMap -->
   {{! component to show the placemarkdetails part}}
-    {{placemark-detailinfo}}
+      {{#if showPlacemarkDetail}}
+         {{placemark-detailinfo}}
+      {{/if}}
   <div id="flowMapLegend">
      <h1>{{t _legend}}</h1>
    </div>
