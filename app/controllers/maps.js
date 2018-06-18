@@ -111,7 +111,12 @@ export default Controller.extend({
     },
     showDetails(evt){
        //this.set('showPlacemarkDetail', false)
-       this.toggleProperty('showPlacemarkDetail') //this can hide n show sidebar
+       //first make the width of the flowMap abit smaller so that detailDiv can also fit.
+        //this.$('#flowMap').style.width = '750px';
+        document.getElementById('flowMap').style.width = '70%';
+        //let flowMap = this.$('#flowMap');
+         //this.set('showPlacemarkDetail', false)
+       //this.toggleProperty('showPlacemarkDetail') //this can hide n show sidebar
     }
   }
   

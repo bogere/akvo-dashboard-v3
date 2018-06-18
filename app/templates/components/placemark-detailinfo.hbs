@@ -5,12 +5,12 @@
            {{#if view.cartoMaps}}
               <h3>{{surveyedLocaleDisplayName}}</h3>
               <li>
-                 <span>{{t _data_point_id}}:</span>
+                 <span>{{t '_data_point_id'}}:</span>
                  <label style="display: inline; margin: 0 0 0 5px;">{{surveyedLocaleIdentifier}}</label>
               </li><br>
            {{/if}}
               <li>
-                <span>{{t _collected_on}}:</span>
+                <span>{{t '_collected_on'}}:</span>
                 <div class="placeMarkCollectionDate">
                     {{date2 collectionDate}}
                 </div>
@@ -23,10 +23,10 @@
               <p>{{placemarkDetail}}</p>
               {{drawGeoshapes}}
            {{else}}
-             <p class="noDetails">{{t _no_details}}</p>
+             <p class="noDetails">{{t '_no_details'}}</p>
            {{/each}}   
         </div>
         {{else}}
-          <p class="noDetails">{{t _no_details}}</p>
+          <p class="noDetails">{{t '_no_details'}}</p>
       {{/if}}
   </div>
