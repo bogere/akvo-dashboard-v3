@@ -44,7 +44,10 @@
  </div> <!--end of the flowMap -->
   {{! component to show the placemarkdetails part}}
       {{#if showPlacemarkDetail}}
-         {{placemark-detailinfo content = markerInfo}}
+         {{!placemark-detailinfo content=markerInfo}}
+         {{#each markerInfo as |detail|}}
+            {{placemark-detailinfo content = detail}}
+         {{/each}}
       {{/if}}
   <div id="flowMapLegend">
      <h1>{{t _legend}}</h1>
