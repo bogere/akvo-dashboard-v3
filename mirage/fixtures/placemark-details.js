@@ -48,5 +48,25 @@ export default [
       "questionText": "two", 
       "questionType": "SCAN", 
       "stringValue": "h jbjbkn"
+    },
+    {
+      "order":1006,
+      "collectionDate":1463039564013,
+      "placemarkId":70619127,
+      "questionText":"Photo",
+      "questionType":"PHOTO",
+      "stringValue":"{\"filename\":\"/storage/emulated/0/akvoflow/data/media/a0e5d1dd-a533-4f08-acd5-c0b79ea8871b.jpg\",\"location\":{\"altitude\":65.0,\"latitude\":23.079263,\"longitude\":5.894143,\"accuracy\":1.0}}",
+      "metricName":null,
+      "keyId":66719136
+    },
+    {
+      "order":1001,
+      "collectionDate":1496752164272,
+      "questionText":"who is going to win world cup",
+      "questionType":"FREE_TEXT",
+      "placemarkId":146259116,
+      "stringValue":"vhzgxnvkb",
+      "metricName":null,
+      "keyId":151659124
     }
 ]

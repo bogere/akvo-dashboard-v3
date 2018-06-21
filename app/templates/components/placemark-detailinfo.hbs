@@ -12,19 +12,13 @@
               <li>
                 <span>{{t '_collected_on'}}:</span>
                 <div class="placeMarkCollectionDate">
-                    {{content.stringValue}}
+                    {{date-format content.collectionDate}}
                 </div>
               </li>
-              <li></li>
-           
+              <li></li>         
         </ul>
         <div class="mapInfoDetail">
-           {{#each arrangedContent}}
-              <p>{{placemarkDetail}}</p>
-              {{drawGeoshapes}}
-           {{else}}
-             <p class="noDetails">{{t '_no_details'}}</p>
-           {{/each}}   
+            {{placemark-detail content}} 
         </div>
         {{else}}
           <p class="noDetails">{{t '_no_details'}}</p>
