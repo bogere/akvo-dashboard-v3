@@ -65,8 +65,9 @@ export default Controller.extend({
                         })
                      })
                      
-                    console.log('detailsInfo',locMarker)
+                    //console.log('detailsInfo',locMarker)
                     self.set('markerInfo', locMarker)
+                    //console.log( typeof(this.get('markerInfo') ) )
                     //then in the template... u shall access it like this. {{markerInfo.keyId}}
                      //then u can show the sidebar part.. for the placemarkdetail info.
                      self.set('showPlacemarkDetail',true) 

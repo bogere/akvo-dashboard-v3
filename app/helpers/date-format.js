@@ -1,9 +1,7 @@
 import { helper } from '@ember/component/helper';
 
 export function dateFormat([dateValue]/*, hash*/) {
-  //return params;
-  //i need to format my date format..
-  console.log('time passed',dateValue)
+
   if (dateValue) {
      var d = new Date(dateValue)
      var date = d.getDate(),

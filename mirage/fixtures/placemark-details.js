@@ -14,10 +14,10 @@ export default [
       "keyId": 155829120, 
       "metricName": null, 
       "order": 1002, 
-      "placemarkId": 17886286, 
+      "placemarkId": 1060006, 
       "questionText": "number", 
-      "questionType": "NUMBER", 
-      "stringValue": "118607"
+      "questionType": "CASCADE", 
+      "stringValue": "118607xy|gyui"
     }, 
     {
       "collectionDate": 1498487112042, 
@@ -52,7 +52,7 @@ export default [
     {
       "order":1006,
       "collectionDate":1463039564013,
-      "placemarkId":70619127,
+      "placemarkId":17886274,
       "questionText":"Photo",
       "questionType":"PHOTO",
       "stringValue":"{\"filename\":\"/storage/emulated/0/akvoflow/data/media/a0e5d1dd-a533-4f08-acd5-c0b79ea8871b.jpg\",\"location\":{\"altitude\":65.0,\"latitude\":23.079263,\"longitude\":5.894143,\"accuracy\":1.0}}",
