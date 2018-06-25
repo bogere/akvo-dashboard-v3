@@ -3,12 +3,14 @@ import { helper } from '@ember/component/helper';
 import {htmlSafe,loc} from '@ember/string';
 import ENV from 'akvov3/config/environment';
 import {inject as service} from '@ember/service';
+import mapUtil from '../utils/map-sidebar'; //it has vital  sidebar functions
 
 export function placemarkDetail([value, ...rest]) {
     i18n: service(); //it works perfectly but accessing it z tight
     let answer, markup, question, cascadeJson, optionJson, cascadeString = "",
         questionType, imageSrcAttr, signatureJson, photoJson, cartoQuestionType,
         self=this;
+    let mapsidebar = mapUtil.create(); //yeah created an object that u shall invoke functions
         //access the  i18n service.
         //let t =  this.get('i18n');
         //let translate = self.get('i18n'); //cant read the property get of undefined
@@ -72,7 +74,10 @@ export function placemarkDetail([value, ...rest]) {
               //answer = renderTimeStamp(answer); ==> automatically handled by date-format helper.
                //there is no need for this becoz there r no transformation needed... like NUMBER n FREE TEXT type
                 //YEAH i skipped the DATE questin type...
+                 let hello = 'iam going to jazz them!!!'
                 console.log('handling the casiffly questions type ')
+                 mapsidebar.renderCaddisflyAnswer(hello)
+                
           }else if (questionType === 'GEOSHAPE') {
               //dealing with the geoshapes geometry part.
               

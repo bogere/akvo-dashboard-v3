@@ -6,7 +6,7 @@ export default [
       "order": 1003, 
       "placemarkId": 17886274, 
       "questionText": "Location", 
-      "questionType": "GEO", 
+      "questionType": "CADDISFLY", 
       "stringValue": "1.38|1.388|504|6c866uv"
     }, 
     {
