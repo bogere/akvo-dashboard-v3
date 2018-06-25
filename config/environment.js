@@ -26,7 +26,7 @@ module.exports = function(environment) {
     },
     //Mapbox Access token must be accessed from the system environment.
     MAPBOX_token: process.env['MAPBOX_ACCESS_TOKEN'],
-    photo_url_root: 'akvo/tesch/folders'
+    photo_url_root: 'https://s3/images/'
   };
 
   if (environment === 'development') {

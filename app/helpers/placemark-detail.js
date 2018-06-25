@@ -46,15 +46,36 @@ export function placemarkDetail([value, ...rest]) {
                             +'<a class="media" data-coordinates=\''
                             +((photoJson.location) ? answer : '') +'\' href="'
                             +mediaFileURL+'" target="_blank"><img src="'+mediaFileURL+'" alt=""/></a><br>'
-                            +((photoJson.location) ? '<a class="media-location" data-coordinates=\''+answer+'\'>'+ t('_show_photo_on_map')+'</a>' : '')
+                            +((photoJson.location) ? '<a class="media-location" data-coordinates=\''+answer+'\'>'+ loc('_show_photo_on_map')+'</a>' : '')
                             +'</div>';  
                   
                }else { //else it z a video type... start drawing the video html tag
-                 
-                 
+                 answer = '<div><div class="media" data-coordinates=\''
+                          + ((photoJson.location)? answer : '' ) +'\'>'+mediaFileURL+'</div><br>'
+                          + '<a href="'+mediaFileURL+'" target="_blank">'+ loc('_open_video')+'</a>'
+                          +((photoJson.location) ? '&nbsp;|&nbsp;<a class="media-location" data-coordinates=\''+answer+'\'>'+ loc('_show_photo_on_map')+'</a>' : '')
+                          +'</div>';  
                }
-          } else {
-            
+               
+          } else if (questionType === 'OPTION' && answer.charAt(0)=== '[') { //OPTION questions part.
+              optionJson = JSON.parse(answer);
+              answer = optionJson.map(function(item){
+                   return item.text;
+              }).join('|')             
+          } else if (questionType === 'SIGNATURE') {
+                 imageSrcAttr = 'data:image/png;base64,';
+                 signatureJson = JSON.parse(answer);
+                 signatureJson && imageSrcAttr + signatureJson.image || '';
+                 answer = answer && '<img src="' + answer + '" />';
+                 answer = answer && answer + '<div>' + loc('_signed_by') + ':' + signatureJson.name + '</div>' || '';
+          } else if (questionType === 'CADDISFLY') {
+              //answer = renderTimeStamp(answer); ==> automatically handled by date-format helper.
+               //there is no need for this becoz there r no transformation needed... like NUMBER n FREE TEXT type
+                //YEAH i skipped the DATE questin type...
+                console.log('handling the casiffly questions type ')
+          }else if (questionType === 'GEOSHAPE') {
+              //dealing with the geoshapes geometry part.
+              
           }
           
     
