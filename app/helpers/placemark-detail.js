@@ -1,20 +1,22 @@
-import Ember from 'ember';
-import { helper } from '@ember/component/helper';
+import Helper from '@ember/component/helper';
 import {htmlSafe,loc} from '@ember/string';
-import ENV from 'akvov3/config/environment';
 import {inject as service} from '@ember/service';
 import mapUtil from '../utils/map-sidebar'; //it has vital  sidebar functions
+import ENV from 'akvov3/config/environment';
 
-export function placemarkDetail([value, ...rest]) {
-    i18n: service(); //it works perfectly but accessing it z tight
-    let answer, markup, question, cascadeJson, optionJson, cascadeString = "",
-        questionType, imageSrcAttr, signatureJson, photoJson, cartoQuestionType,
-        self=this;
-    let mapsidebar = mapUtil.create(); //yeah created an object that u shall invoke functions
-        //access the  i18n service.
-        //let t =  this.get('i18n');
-        //let translate = self.get('i18n'); //cant read the property get of undefined
-          //extract these values from the content passed.
+
+export default Helper.extend({
+   i18n: service(),
+   
+   compute([value, ...rest]){
+     let answer, markup, question, cascadeJson, optionJson, cascadeString = "",
+         questionType, imageSrcAttr, signatureJson, photoJson, cartoQuestionType,
+         self=this;
+     let mapsidebar = mapUtil.create(); //yeah created an object that u shall invoke functions
+     let i18ny = this.get('i18n') //access the localisatin service
+     
+     
+     //extract these values from the content passed.
           questionType = value.questionType;
           question = value.questionText;
           answer = value.stringValue;
@@ -48,14 +50,14 @@ export function placemarkDetail([value, ...rest]) {
                             +'<a class="media" data-coordinates=\''
                             +((photoJson.location) ? answer : '') +'\' href="'
                             +mediaFileURL+'" target="_blank"><img src="'+mediaFileURL+'" alt=""/></a><br>'
-                            +((photoJson.location) ? '<a class="media-location" data-coordinates=\''+answer+'\'>'+ loc('_show_photo_on_map')+'</a>' : '')
+                            +((photoJson.location) ? '<a class="media-location" data-coordinates=\''+answer+'\'>'+ i18ny.t('_show_photo_on_map')+'</a>' : '')
                             +'</div>';  
                   
                }else { //else it z a video type... start drawing the video html tag
                  answer = '<div><div class="media" data-coordinates=\''
                           + ((photoJson.location)? answer : '' ) +'\'>'+mediaFileURL+'</div><br>'
-                          + '<a href="'+mediaFileURL+'" target="_blank">'+ loc('_open_video')+'</a>'
-                          +((photoJson.location) ? '&nbsp;|&nbsp;<a class="media-location" data-coordinates=\''+answer+'\'>'+ loc('_show_photo_on_map')+'</a>' : '')
+                          + '<a href="'+mediaFileURL+'" target="_blank">'+ i18ny.t('_open_video')+'</a>'
+                          +((photoJson.location) ? '&nbsp;|&nbsp;<a class="media-location" data-coordinates=\''+answer+'\'>'+ i18ny.t('_show_photo_on_map')+'</a>' : '')
                           +'</div>';  
                }
                
@@ -69,7 +71,7 @@ export function placemarkDetail([value, ...rest]) {
                  signatureJson = JSON.parse(answer);
                  signatureJson && imageSrcAttr + signatureJson.image || '';
                  answer = answer && '<img src="' + answer + '" />';
-                 answer = answer && answer + '<div>' + loc('_signed_by') + ':' + signatureJson.name + '</div>' || '';
+                 answer = answer && answer + '<div>' + i18ny.t('_signed_by') + ':' + signatureJson.name + '</div>' || '';
           } else if (questionType === 'CADDISFLY') {
               //answer = renderTimeStamp(answer); ==> automatically handled by date-format helper.
                //there is no need for this becoz there r no transformation needed... like NUMBER n FREE TEXT type
@@ -83,8 +85,9 @@ export function placemarkDetail([value, ...rest]) {
               
           }
           
-    
-    //final result of helper.
+     
+     
+     //final result of helper.
     markup = '<div class= "defListWrap"><h4>'
               +  question + ':</h4><div>' +
               answer + '</div></div>';
@@ -92,6 +95,5 @@ export function placemarkDetail([value, ...rest]) {
     //let  safeMarkup = Ember.Handlebars.Utils.escapeExpression(markup);
     //return htmlSafe(safeMarkup) //but it z cming from the server n trusted thus no need to escape it.
     return htmlSafe(markup)
-}
-
-export default helper(placemarkDetail);
+   }
+})

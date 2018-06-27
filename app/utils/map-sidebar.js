@@ -1,17 +1,45 @@
 /*export default function mapSidebar() {
   return true;
 }*/
-
+import Ember from 'ember';
 import EmberObj from '@ember/object';
-import {inject as service} from '@ember/service';
+//import {inject as service} from '@ember/service';
+import {A} from '@ember/array';
+import ENV from 'akvov3/config/environment';
 
 export default EmberObj.extend({
     init(){
       //this.super(...arguments) //this only works for commponents when extending them.
       //objects --> this.set('titles', []) for initialising the values
     },
+    
     renderCaddisflyAnswer(json){
        //console.log('iam activating cadisfly part ' + json ) //yeah it works perefectly
+       var name = "",
+           imageUrl = "",
+           result = A([]);
+          //!Ember.empty(json)
+           if (json!== undefined && json!== null) { //Ember.empty is not a function
+              try {
+                  var jsonParsed = JSON.parse(json);
+                  //// get out image url
+                   if (!Ember.empty(jsonParsed.image)) {
+                      imageUrl = ENV.photo_url_root + jsonParsed.image.trim();
+                   }
+                   //construct the html
+                   html = "<div><strong>" + name + "</strong></div>"
+                   html += jsonParsed.result.map(function(item){
+                          return "<br><div>" + item.name + " : " + item.value + " " + item.unit + "</div>";
+                   }).join("\n")
+                   html += "<br>"
+                   html += "<div class=\"signatureImage\"><img src=\"" + imageUrl +"\"}} /></div>"
+                   return html
+              } catch (e) {
+                return json
+              } 
+          } else {
+            return "Wrong json format"
+          }
     }
     
 })
