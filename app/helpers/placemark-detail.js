@@ -1,4 +1,5 @@
 import Helper from '@ember/component/helper';
+import {computed,observer} from '@ember/object';
 import {htmlSafe,loc} from '@ember/string';
 import {inject as service} from '@ember/service';
 import mapUtil from '../utils/map-sidebar'; //it has vital  sidebar functions
@@ -7,6 +8,10 @@ import ENV from 'akvov3/config/environment';
 
 export default Helper.extend({
    i18n: service(),
+   
+   onLocalesInit: observer('i18n.locales', function(){
+      this.recompute()  //dynamically reflect translations when u change languages
+   }),
    
    compute([value, ...rest]){
      let answer, markup, question, cascadeJson, optionJson, cascadeString = "",
@@ -76,9 +81,8 @@ export default Helper.extend({
               //answer = renderTimeStamp(answer); ==> automatically handled by date-format helper.
                //there is no need for this becoz there r no transformation needed... like NUMBER n FREE TEXT type
                 //YEAH i skipped the DATE questin type...
-                 let hello = 'iam going to jazz them!!!'
-                console.log('handling the casiffly questions type ')
-                 mapsidebar.renderCaddisflyAnswer(hello)
+                
+                 mapsidebar.renderCaddisflyAnswer(answer)
                 
           }else if (questionType === 'GEOSHAPE') {
               //dealing with the geoshapes geometry part.
