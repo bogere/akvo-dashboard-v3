@@ -85,8 +85,15 @@ export default Helper.extend({
                  mapsidebar.renderCaddisflyAnswer(answer)
                 
           }else if (questionType === 'GEOSHAPE') {
-              //dealing with the geoshapes geometry part.
-              
+            
+                var geoshapeObject = mapsidebar.FLOW_parseJson(answer, "features")//it is already object parsed by JS interpreter
+                 if (geoshapeObject) {
+                     answer = 'div class = "geoshape-map" data-geoshape-object=\''+answer+'\' style="width:100%; height: 100px; float: left"></div>'
+                     +'<a style="float: left" class="project-geoshape" data-geoshape-object=\''+answer+'\'>'+ i18ny.t('_project_onto_main_map')+'</a>';
+                     
+                     var geoObj = geoshapeObject['features'][0]['geometry']['type']; //testing whether it is polygon or line
+                    
+                 }
           }
           
      

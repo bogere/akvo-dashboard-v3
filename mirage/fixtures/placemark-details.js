@@ -4,7 +4,7 @@ export default [
       "keyId": 155829119, 
       "metricName": null, 
       "order": 1003, 
-      "placemarkId": 17886274, 
+      "placemarkId": 1060006 , 
       "questionText": "Location", 
       "questionType": "CADDISFLY", 
       "stringValue": "1.38|1.388|504|6c866uv"
@@ -14,7 +14,7 @@ export default [
       "keyId": 155829120, 
       "metricName": null, 
       "order": 1002, 
-      "placemarkId": 1060006, 
+      "placemarkId": 17886274, 
       "questionText": "number", 
       "questionType": "CASCADE", 
       "stringValue": '[{"name":"France"},{"name":"Île-de-France"},{"name":"Paris"},{"name":"Paris, 8e arrondissement"},{"name":"Paris, 8e arrondissement"},{"name":"Paris, 8e arrondissement"}]'
@@ -52,7 +52,7 @@ export default [
     {
       "order":1006,
       "collectionDate":1463039564013,
-      "placemarkId":17886274,
+      "placemarkId":1060006,
       "questionText":"Photo",
       "questionType":"PHOTO",
       "stringValue":"{\"filename\":\"/storage/emulated/0/akvoflow/data/media/a0e5d1dd-a533-4f08-acd5-c0b79ea8871b.jpg\",\"location\":{\"altitude\":65.0,\"latitude\":23.079263,\"longitude\":5.894143,\"accuracy\":1.0}}",
@@ -74,14 +74,8 @@ export default [
       "collectionDate":  1451864149212,
       "questionText" : "Shape",
       "questionType" : "GEOSHAPE",
-      "placemarkId" :52339118,
-      "stringValue": {"type":"FeatureCollection",
-                       "features":[{"type":"Feature","geometry":{"type":"Polygon",
-                       "coordinates":[[[1.4736777171492577,31.29787145713674],
-                                     [5.498492941260338,29.343754988937135],[3.2659773901104927,25.57817386715919],
-                                     [-0.9789425879716872,24.924074606983293],[1.4736777171492577,31.29787145713674]]]},
-                      "properties":{"pointCount":"4","length":"2095506.75","area":"246958097061.82"}}
-                    ]},
+      "placemarkId" :17886274,
+      "stringValue": '{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[1.4736777171492577,31.29787145713674],[5.498492941260338,29.343754988937135],[3.2659773901104927,25.57817386715919],[-0.9789425879716872,24.924074606983293],[1.4736777171492577,31.29787145713674]]]},"properties":{"pointCount":"4","length":"2095506.75","area":"246958097061.82"}}]}',
       "metricName" : null,
       "keyId" :50299116
     },

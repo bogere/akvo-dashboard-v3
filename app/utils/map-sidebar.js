@@ -40,6 +40,19 @@ export default EmberObj.extend({
           } else {
             return "Wrong json format"
           }
+    },
+    FLOW_parseJson(jsonString, property){
+       //Your data is already an object. No need to parse it. The javascript interpreter has already parsed it for you.
+        try {
+           var jsonObj = JSON.parse(jsonString)
+            if (jsonObj[property].length >0) {
+                return jsonObj;
+            } else {
+              return null
+            }
+        } catch (e) {
+          return null
+        }
     }
     
 })
