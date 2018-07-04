@@ -53,6 +53,12 @@ export default EmberObj.extend({
         } catch (e) {
           return null
         }
-    }
+    },
+     //getting the center for the map on the sidebar.. (dynamically )
+     FLOW_getCentroid(arr){
+       return arr.reduce(function(x,y){
+          return [x[0] + y[0]/arr.length, x[1] + y[1]/arr.length]
+       }, [0,0])
+     }
     
 })

@@ -88,11 +88,27 @@ export default Helper.extend({
             
                 var geoshapeObject = mapsidebar.FLOW_parseJson(answer, "features")//it is already object parsed by JS interpreter
                  if (geoshapeObject) {
-                     answer = 'div class = "geoshape-map" data-geoshape-object=\''+answer+'\' style="width:100%; height: 100px; float: left"></div>'
-                     +'<a style="float: left" class="project-geoshape" data-geoshape-object=\''+answer+'\'>'+ i18ny.t('_project_onto_main_map')+'</a>';
+                   answer = '<div class="geoshape-map" data-geoshape-object=\''+answer+'\' style="width:100%; height: 100px; float: left"></div>'
+                            +'<a style="float: left" class="project-geoshape" data-geoshape-object=\''+answer+'\'>'+ i18ny.t('_project_onto_main_map')+'</a>';
                      
                      var geoObj = geoshapeObject['features'][0]['geometry']['type']; //testing whether it is polygon or line
-                    
+                      if (geoObj === 'Polygon') { //this is the most common...
+                        //answer ==> points + length + area
+                        answer += '<div style="float: left; width: 100%">'+ i18ny.t('_points') +': '+geoshapeObject['features'][0]['properties']['pointCount']+'</div>';
+                        answer += '<div style="float: left; width: 100%">'+ i18ny.t('_length') +': '+geoshapeObject['features'][0]['properties']['length']+'m</div>';
+                        answer += '<div style="float: left; width: 100%">'+ i18ny.t('_area') +': '+geoshapeObject['features'][0]['properties']['area']+'m&sup2;</div>';
+                      }
+                      
+                      //line string..
+                      if (geoObj === 'LineString') {
+                        answer += '<div style="float: left; width: 100%">'+ i18ny.t('_points') +': '+geoshapeObject['features'][0]['properties']['pointCount']+'</div>';
+                        answer += '<div style="float: left; width: 100%">'+ i18ny.t('_length') +': '+geoshapeObject['features'][0]['properties']['length']+'m</div>';
+                      }
+                      
+                      //Multipoint.
+                      if (geoObj === 'MultiPoint') {
+                          answer += '<div style="float: left; width: 100%">'+ i18ny.t('_points') +': '+geoshapeObject['features'][0]['properties']['pointCount']+'</div>';
+                      }
                  }
           }
           
