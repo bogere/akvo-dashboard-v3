@@ -18,7 +18,13 @@
               <li></li>         
         </ul>
         <div class="mapInfoDetail">
-            <p>{{placemark-detail content}}</p> 
+            <p>{{placemark-detail content}}</p>
+              {{!log 'displayMap' displayMap}}
+            {{#if showingShape}} 
+            <div class="sidebar-geoshape" style="width:150px;height:100px">
+               <h3>Leaflet demo here</h3> 
+            </div>
+            {{/if}}
         </div>
         {{else}}
           <p class="noDetails">{{t '_no_details'}}</p>

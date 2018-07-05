@@ -3,6 +3,7 @@ import Controller from '@ember/controller';
 import EmberObj , {computed, observer} from '@ember/object';
 import { A } from '@ember/array';
 import ENV from 'akvov3/config/environment';
+//import $ from 'jquery';
 //import { inject as service } from '@ember/service';
 
 export default Controller.extend({
@@ -115,8 +116,8 @@ export default Controller.extend({
        //this.set('showPlacemarkDetail', false)
        //first make the width of the flowMap abit smaller so that detailDiv can also fit.
         //this.$('#flowMap').style.width = '750px'; //refers to the marker component only..
-           //this.$('#flowMap').style.width = '70%'; //global jquery $ refers to the whole document
-            document.getElementById('flowMap').style.width = '70%';
+              //$('#flowMap').style.width = '70%'; //global jquery $ refers to the whole document
+              document.getElementById('flowMap').style.width = '70%';
           //Ember.$('#flowMap').style.width = '70%'; Cannot set property 'width' of undefined
         //let flowMap = this.$('#flowMap');
          //this.set('showPlacemarkDetail', false)
