@@ -1,4 +1,4 @@
-import Ember from 'ember';
+//import Ember from 'ember';
 import Controller from '@ember/controller';
 import EmberObj , {computed, observer} from '@ember/object';
 import { A } from '@ember/array';
@@ -9,6 +9,7 @@ import ENV from 'akvov3/config/environment';
 export default Controller.extend({
   //Notice that we specified the center of the map and its zoom level passing
   locationD: [],
+  markerInfo: A([]),
   lat: 0,
   lng:0,
   zoom: 1, //zoom level 10 makes focus on the map smaller. 
