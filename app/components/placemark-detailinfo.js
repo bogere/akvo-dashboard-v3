@@ -31,6 +31,7 @@ export default Component.extend({
       dataPoint:[0.3340316,32.5889985]
     }
   ]),
+//  locationPoints: A([]),  start working on the dynamic values on Monnday.. let mulo help u understand
    
    didReceiveAttrs(){
      this._super(...arguments)
@@ -46,17 +47,26 @@ export default Component.extend({
         //let geoshapeObject = details.stringValue; //u need to parse this data first .. that is why is undefined
         
         let geoshapeObject = mapsidebar.FLOW_parseJson(details.stringValue, 'features')
-        let geoshapeCoordinatesArray, 
+        let geoshapeCoordinatesArray, points = [], 
             geoShapeObjectType = geoshapeObject['features'][0]['geometry']['type'];
          if (geoShapeObjectType === 'Polygon') {
             this.set('showPolygon', true)
             //the same should apply for the line geometry line
-            //geoshapeCoordinatesArray = geoShapeObjectType['features'][0]['geometry']['coordinates'][0]
              geoshapeCoordinatesArray = geoshapeObject['features'][0]['geometry']['coordinates'][0];
-              console.log(geoshapeCoordinatesArray)
+              //console.log(geoshapeCoordinatesArray)
+               //u need to create the geopoints on the map.
+               for (var i = 0; i < geoshapeCoordinatesArray.length; i++) {
+                 //array[i]
+                 //  points.push([geoshapeCoordinatesArray[j][1], geoshapeCoordinatesArray[j][0]]);
+                 //what is [lat, lng] ==> the above shows the other way round
+                 points.push([geoshapeCoordinatesArray[i][0], geoshapeCoordinatesArray[i][1]])
+               }
+              //this.set('locationPoints', geoshapeCoordinatesArray)
+              //this.set('locationPoints', points) //n monday start here.. solving the problem
          }else {
             //it is a lineString or something else.
             this.set('showLine', true)
+            geoshapeCoordinatesArray = geoshapeObject['features'][0]['geometry']['coordinates']
          }
          
       }
